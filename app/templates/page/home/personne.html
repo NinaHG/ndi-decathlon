@@ -1,0 +1,45 @@
+{% extends "layout/base/base_success.html" %}
+
+{# Metadata ##################################################################}
+{% set page_name = "Personnes" %}
+{% set page_description = "Page personnes." %}
+
+
+{# Stylesheet ################################################################}
+{% block stylesheets %}
+{{ super() }}
+{% endblock stylesheets %}
+
+
+{# Script ####################################################################}
+
+
+{# Display ###################################################################}
+{% block main %}
+<h1>Personne</h1>
+     <a href="{{ url_for('gestion_personne_create') }}" class="col btn btn-primary" role="button"  style="width:20em;">Ajouter Personne</a>
+    {# ------------------------------ #}
+    <table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Modifier</th>
+      <th scope="col">Consulter</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for p in personnes %}
+    <tr>
+      <th scope="row">1</th>
+      <td>{{ p.nom }}</td>
+      <td>{{ p.prenom }}</td>
+      <td><a href="{{ url_for('gestion_personne_edit', id =p.pers_id) }}" class="col btn btn-primary" role="button">Modifier</a></td>
+      <td><a href="{{ url_for('personne_detail', id =p.pers_id) }}" class="col btn btn-primary" role="button">Consulter</a></td>
+    </tr>
+  {% endfor %}
+  </tbody>
+    </table>
+
+{% endblock main %}

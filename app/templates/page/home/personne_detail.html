@@ -1,0 +1,27 @@
+{% extends "layout/base/base_success.html" %}
+
+{# Metadata ##################################################################}
+{% set page_name = "Personne" %}
+{% set page_description = "Page personne." %}
+
+
+{# Stylesheet ################################################################}
+{% block stylesheets %}
+{{ super() }}
+{% endblock stylesheets %}
+
+
+{# Script ####################################################################}
+
+
+{# Display ###################################################################}
+{% block main %}
+<h1>{{ personne.nom }} {{ personne.prenom }}</h1>
+   <p>Date de naissance: {{ personne.date_naissance }}</p>
+    <p>Date de deces: {{ personne.date_deces }}</p>
+    {% if personne.sauvetage  %}
+        <p>Sauveteur: oui</p>
+    {% else %}
+        <p>Sauveteur: non</p>
+    {% endif %}
+{% endblock main %}

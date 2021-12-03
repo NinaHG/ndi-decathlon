@@ -1,0 +1,33 @@
+{% extends "layout/base/base_success.html" %}
+
+{# Metadata ##################################################################}
+{% set page_name = "Admin personne" %}
+{% set page_description = "Page Admin personne." %}
+
+
+{# Stylesheet ################################################################}
+{% block stylesheets %}
+{{ super() }}
+{% endblock stylesheets %}
+
+
+{# Script ####################################################################}
+
+
+{# Display ###################################################################}
+{% block main %}
+    <h1>{{ personne.nom }} {{ personne.prenom }}</h1>
+   <p>Date de naissance: {{ personne.date_naissance }}</p>
+    <p>Date de deces: {{ personne.date_deces }}</p>
+    {% if personne.sauvetage  %}
+        <p>Sauveteur: oui</p>
+    {% else %}
+        <p>Sauveteur: non</p>
+    {% endif %}
+
+    <form class="m-auto needs-validation" method="post" action="{{ url_for('admin_personne',id=personne.pers_id) }}">
+		{{ form.csrf_token() }}
+        {{ form.submit(class="btn btn-primary") }}
+        <a href="{{ url_for('admin') }}" class="btn btn-primary" role="button">Annuler</a>
+    </form>
+{% endblock main %}

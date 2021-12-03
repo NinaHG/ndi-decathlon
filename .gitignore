@@ -1,0 +1,13 @@
+# Pycharm configuration directory for this project.
+/.idea
+
+# Virtual Python environment directory.
+# Note: refer to the README to create venv directory.
+/venv
+
+# Database directory.
+# Note: refer to the README to generate SQLite database file.
+/database
+
+# All Python cache directories
+__pycache__

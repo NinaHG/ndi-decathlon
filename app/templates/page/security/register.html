@@ -1,0 +1,75 @@
+{% extends "layout/base/base_security.html" %}
+
+{# Metadata ##################################################################}
+{% set page_name = "Inscription" %}
+{% set page_description = "Création d'un compte utilisateur." %}
+
+
+{# Stylesheet ################################################################}
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/page/security/register.css')}}"/>
+{% endblock stylesheets %}
+
+
+{# Script ####################################################################}
+{% block scripts %}
+{% endblock scripts %}
+
+
+
+{# Display ###################################################################}
+{% macro show_errors(errors) %}
+	{% if errors | length > 0 %}
+	{% for error in errors %}
+		<div class="invalid-feedback">{{ error }}</div>
+	{% endfor %}
+	{% endif %}
+{% endmacro %}
+
+{% macro is_valid(field) %}
+	{%- if field.errors | length > 0 %}is-invalid{% else %}is-valid{% endif %}
+{%- endmacro %}
+
+{% set state_first_name_field = is_valid(register_form.first_name) if register_form.is_submitted() %}
+{% set state_last_name_field = is_valid(register_form.last_name) if register_form.is_submitted() %}
+{% set state_email_field = is_valid(register_form.email) if register_form.is_submitted() %}
+{% set state_password_field = is_valid(register_form.password) if register_form.is_submitted() %}
+{% set state_password_confirm_field = is_valid(register_form.password_confirm) if register_form.is_submitted() %}
+
+{% block main %}
+<form class="m-auto needs-validation" method="post" action="{{ url_for('register') }}">
+	<h1>{{ page_name | capitalize }}</h1>
+	{{ register_form.csrf_token() }}
+	<div class="mb-3">
+		{{ register_form.first_name.label(class="form-label") }}
+		{{ register_form.first_name(class="form-control " ~ state_first_name_field) }}
+		{{ show_errors(register_form.first_name.errors) }}
+	</div>
+	<div class="mb-3">
+		{{ register_form.last_name.label(class="form-label") }}
+		{{ register_form.last_name(class="form-control " ~ state_last_name_field) }}
+		{{ show_errors(register_form.last_name.errors) }}
+	</div>
+	<div class="mb-3">
+		{{ register_form.email.label(class="form-label") }}
+		{{ register_form.email(class="form-control " ~ state_email_field) }}
+		{{ show_errors(register_form.email.errors) }}
+	</div>
+	<div class="mb-3">
+		{{ register_form.password.label(class="form-label") }}
+		{{ register_form.password(class="form-control " ~ state_password_field) }}
+		{{ show_errors(register_form.password.errors) }}
+	</div>
+	<div class="mb-3">
+		{{ register_form.password_confirm.label(class="form-label") }}
+		{{ register_form.password_confirm(class="form-control " ~ state_password_confirm_field) }}
+		{{ show_errors(register_form.password_confirm.errors) }}
+	</div>
+	<div class="mb-3 d-grid">
+		{{ register_form.submit(class="btn btn-primary") }}
+	</div>
+	<div class="fs-6">
+		Vous avez déjà un login et un mot de passe ? <a href="{{ url_for('security.login') }}">S'authentifier</a>
+	</div>
+</form>
+{% endblock main %}

@@ -1,0 +1,30 @@
+{% extends "layout/base_wiki.html" %}
+
+{# Metadata ##################################################################}
+{% set page_name = "Sports" %}
+{% set page_description = "Liste des sports." %}
+
+
+{# Stylesheet ################################################################}
+
+
+{# Script ####################################################################}
+
+
+{# Display ###################################################################}
+{% block main %}
+    <h1 class="vtmn-typo_title-1 mb-3">Sports</h1>
+
+    <ul>
+    {% for sport in sports %}
+        <li class="block vtmn-flex vtmn-flex-row vtmn-flex-wrap">
+            {% if sport.attributes.icon %}
+                <img style="width: 30px; height: 30px;" src="{{ sport.attributes.icon }}" alt="icône {{ sport.attributes.name }}" />
+            {% endif %}
+            <a href="{{ url_for('sport_desc', sport_id=sport.id) }}" class="vtmn-link vtmn-link--standalone">
+            {{ sport.attributes.name }}
+            </a>
+        </li>
+    {% endfor %}
+    </ul>
+{% endblock main %}

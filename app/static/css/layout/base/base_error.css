@@ -1,0 +1,22 @@
+/* pas de mise en forme spécifique à cette page */
+
+main {
+    background-image: url(/static/img/icon.png);
+    background-repeat: no-repeat;
+    background-position-x: right;
+    background-position-y: center;
+    background-size: contain;
+}
+
+#error-code {
+    font-size: 10rem;
+    line-height: initial;
+    font-weight: bold;
+    margin: 0;
+}
+
+#error-name {
+    font-size: 3rem;
+    line-height: initial;
+    margin: 0;
+}

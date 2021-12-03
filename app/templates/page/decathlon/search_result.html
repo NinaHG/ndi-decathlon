@@ -1,0 +1,35 @@
+{% extends "layout/base_wiki.html" %}
+
+{# Metadata ##################################################################}
+{% set page_name = "Groupes de sports" %}
+{% set page_description = "Liste des groupes de sports." %}
+
+
+{# Stylesheet ################################################################}
+
+
+{# Script ####################################################################}
+
+
+{# Display ###################################################################}
+{% block main %}
+    <h1 class="vtmn-typo_title-1 mb-3">Résultats pour "{{ query }}"</h1>
+
+    <div class="block vtmn-flex vtmn-flex-row vtmn-flex-wrap">
+        {% for sport in sports %}
+            <div class="block">
+              <a href="{{ url_for('sport_desc', sport_id=sport.id) }}" class="vtmn-card vtmn-card_variant--top-image">
+                <div class="vtmn-card_image vtmn-card_image--full">
+                  <img
+                    src="{{ sport.relationships.images.data[0].variants[0].thumbnail.url if sport.relationships.images.data|length > 0 else 'https://via.placeholder.com/250' }}"
+                    alt="{{ sport.attributes.name }}"
+                  />
+                </div>
+                <div class="vtmn-card_content">
+                  <span class="vtmn-card_content--title">{{ sport.attributes.name }}</span>
+                </div>
+              </a>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock main %}

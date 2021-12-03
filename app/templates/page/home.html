@@ -1,0 +1,21 @@
+{% extends "layout/base/base_success.html" %}
+
+{# Metadata ##################################################################}
+{% set page_name = "Accueil" %}
+{% set page_description = "Page d'accueil." %}
+
+
+{# Stylesheet ################################################################}
+{% block stylesheets %}
+{{ super() }}
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/page/home.css')}}"/>
+{% endblock stylesheets %}
+
+
+{# Script ####################################################################}
+
+
+{# Display ###################################################################}
+{% block main %}
+<iframe  src="http://www.les-corsaires-dunkerquois.com/" style="width: 100%; height: 100%"></iframe>
+{% endblock main %}

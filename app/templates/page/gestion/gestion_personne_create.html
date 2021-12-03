@@ -1,0 +1,36 @@
+{% extends "layout/base/base_success.html" %}
+
+{# Metadata ##################################################################}
+{% set page_name = "Création personne" %}
+{% set page_description = "Page création personne." %}
+
+
+{# Stylesheet ################################################################}
+{% block stylesheets %}
+{{ super() }}
+{% endblock stylesheets %}
+
+
+{# Script ####################################################################}
+
+
+{# Display ###################################################################}
+{% block main %}
+<h1>Création personne</h1>
+        <form method="POST" action="{{ url_for('gestion_personne_create') }}">
+             <div class=
+                {% if form.nom.errors %}
+                "form-group has-error"
+                {% else %}
+                "form-group"
+                {% endif %}
+            >
+            {{ form.hidden_tag() }}
+            {{ form.nom.label }} {{ form.nom(size=20, class_="form-control") }}
+            {{ form.prenom.label }} {{ form.prenom(size=20, class_="form-control") }}
+            <div>{{ form.date_naissance.label }} {{ form.date_naissance }}</div>
+            <div>{{ form.date_deces.label }} {{ form.date_deces }}</div>
+            <div>{{ form.sauvetage.label }}{{ form.sauvetage }}</div>
+            <input class="btn btn-primary" type="submit" value="Enregistrer">
+        </form>
+{% endblock main %}

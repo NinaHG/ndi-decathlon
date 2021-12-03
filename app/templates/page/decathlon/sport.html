@@ -1,0 +1,69 @@
+{% extends "layout/base_wiki.html" %}
+
+{# Metadata ##################################################################}
+{% set page_name = "Sport" %}
+{% set page_description = "Description d'un sport" %}
+
+
+{# Stylesheet ################################################################}
+
+
+{# Script ####################################################################}
+
+
+{# Display ###################################################################}
+{% block main %}
+    <h1 class="vtmn-typo_title-1 mb-3">{{ sport.attributes.name }}</h1>
+
+    {% if image_url %}
+         <img class="my-3"
+         src="{{ image_url }}"
+         alt="{{ sport.attributes.name }}">
+    {% endif %}
+
+    {% if sport.attributes.description %}
+        <p class="mb-3">{{ sport.attributes.description }}</p>
+    {% else %}
+        <p>Aucune description.</p>
+    {% endif %}
+
+    {% if children %}
+    <h2 class="vtmn-typo_title-2 mb-3">Sports en relation</h2>
+        <ul class="mb-3">
+            {% for child in children %}
+                <li>
+                    <a href="{{ url_for('sport_desc', sport_id=child.id) }}" class="vtmn-link vtmn-link--standalone">
+                        {{ child.attributes.name }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    {% if related_list %}
+        <h2 class="vtmn-typo_title-2 mb-3">Voir aussi</h2>
+
+        <ul class="mb-3">
+            {% for related in related_list %}
+                <li>
+                    <a href="{{ url_for('sport_desc', sport_id=related.id) }}" class="vtmn-link vtmn-link--standalone">
+                        {{ related.attributes.name }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    {% if sport.relationships.tags.data|length > 0 %}
+        <h2 class="vtmn-typo_title-2 mb-3">Tags</h2>
+
+        <div class="block vtmn-flex vtmn-flex-row vtmn-flex-wrap">
+            {% for tag in sport.relationships.tags.data %}
+                <div class="vtmn-chip vtmn-chip_variant--input vtmn-chip_size--small m-1" tabindex="0">
+                    {{ tag }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+{% endblock main %}

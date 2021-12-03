@@ -1,0 +1,46 @@
+{% extends "layout/base/base_success.html" %}
+
+{# Metadata ##################################################################}
+{% set page_name = "Pimp Your Data" %}
+{% set page_description = "Page d'accueil." %}
+
+
+{# Stylesheet ################################################################}
+{% block stylesheets %}
+{{ super() }}
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/page/pimp.css')}}"/>
+{% endblock stylesheets %}
+
+
+{# Script ####################################################################}
+{# <p> En France, les Centres régionaux opérationnels de surveillance et de sauvetage (CROSS) assurent une mission générale de coordination des activités de sécurité et de surveillance des activités maritimes, dans le cadre de l'action de l'État en mer.
+    Leur mission est le sauvetage et la recherche en mer ainsi que la surveillance de la navigation maritime</p>
+    <input type="button" value="Affichage du graphique du CROSS">
+<iframe style="border: 0; overflow: hidden;" frameBorder="0" height="100%" width="100%" src="https://nuit-info-2021.toucantoco.com/embed.html?id=8499dd2a-b47c-4bd0-9d92-4432bf9a95de&panel=true&stage=staging"></iframe>
+#}
+
+{# Display ###############################  ####################################}
+{% block main %}
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item-a" role="presentation">
+    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">CROSS</button>
+  </li>
+  <li class="nav-item-b" role="presentation">
+    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Classification</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">Nombres d'interventions</button>
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+        <iframe style="border: 0; overflow: hidden;" frameBorder="0" height="500px" width="100%" src="https://nuit-info-2021.toucantoco.com/embed.html?id=8499dd2a-b47c-4bd0-9d92-4432bf9a95de&stage=staging"></iframe>
+  </div>
+  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+      <iframe style="border: 0; overflow: hidden;" frameBorder="0" height="500px" width="100%" src="https://nuit-info-2021.toucantoco.com/embed.html?id=01c3787c-3cf0-4991-a26f-1d627afdf2c8&stage=staging"></iframe>
+  </div>
+  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+      <iframe style="border: 0; overflow: hidden;" frameBorder="0" height="500px" width="100%" src="https://nuit-info-2021.toucantoco.com/embed.html?id=0e438a8b-d550-4946-a2f7-20d9072fb728&stage=staging"></iframe>
+  </div>
+</div>
+{% endblock main %}

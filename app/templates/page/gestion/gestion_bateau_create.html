@@ -1,0 +1,40 @@
+{% extends "layout/base/base_success.html" %}
+
+{# Metadata ##################################################################}
+{% set page_name = "Création bateau" %}
+{% set page_description = "Page création bateau." %}
+
+
+{# Stylesheet ################################################################}
+{% block stylesheets %}
+{{ super() }}
+{% endblock stylesheets %}
+
+
+{# Script ####################################################################}
+
+
+{# Display ###################################################################}
+{% block main %}
+<form class="m-auto needs-validation" method="post" action="{{ url_for('gestion_bateau_create') }}">
+	<h1>{{ page_name | capitalize }}</h1>
+	{{ bateau_form.csrf_token() }}
+	<div class="mb-3">
+		{{ bateau_form.nom.label(class="form-label") }}
+		{{ bateau_form.nom(class="form-control ") }}
+	</div>
+	<div class="mb-2">
+		{{ bateau_form.sauvetage.label(class="form-label") }}
+		{{ bateau_form.sauvetage }}
+	</div>
+{## TODO ajouter si user = admin#}
+{#	<div class="mb-2">#}
+{#		{{ bateau_form.valide_bat.label(class="form-label") }}#}
+{#		{{ bateau_form.valide_bat(class="form-control ") }}#}
+{#	</div>#}
+	<div class="mb-3 d-grid">
+		{{ bateau_form.submit(class="btn btn-primary") }}
+	</div>
+</form>
+
+{% endblock main %}

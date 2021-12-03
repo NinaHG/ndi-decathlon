@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<div class="container-fluid">
+		<a class="navbar-brand" href="{{ url_for('home') }}">
+			<img src="{{ url_for('static', filename='img/icon.png') }}" alt="" width="30" height="24" class="d-inline-block align-text-top">
+			{{ app_name | capitalize }}
+		</a>
+		<div class="collapse navbar-collapse" id="navbarNavDropdown">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link active" aria-current="page" href="{{ url_for('home') }}">Accueil</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ url_for('personne') }}">Personne</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ url_for('wiki_home') }}">Défi - Decathlon</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link " href="{{ url_for('pimp') }}">Défi - Pimp Your App</a>
+				</li>
+                {% if "admin" in current_user.roles %}
+                <li class="nav-item">
+					<a class="nav-link" href="{{ url_for('admin') }}">Admin</a>
+                </li>
+                 {% endif %}
+
+            </ul>
+        </div>
+		{% if current_user.is_authenticated %}
+		<div class="navbar-nav">
+			<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+				{{ current_user.first_name | capitalize }} {{ current_user.last_name | upper }}
+			</a>
+			<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+				<li><a class="dropdown-item disabled" href="#">Paramètres</a></li>
+				<li><hr class="dropdown-divider"></li>
+				<li><a class="dropdown-item" href="{{ url_for('security.logout') }}">Déconnexion</a></li>
+			</ul>
+		</div>
+		{% else %}
+			{% if request.endpoint not in ["security.login", "register"] %}
+			<a class="nav-link" href="{{ url_for('security.logout') }}">Authentification</a>
+			{% endif %}
+		{% endif %}
+	</div>
+</nav>

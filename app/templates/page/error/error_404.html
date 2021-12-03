@@ -1,0 +1,16 @@
+{% extends "layout/base/base_error.html" %}
+
+{# Metadata ##################################################################}
+
+
+{# Stylesheet ################################################################}
+{% block stylesheets %}
+{{ super() }}
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/page/error/error_404.css')}}"/>
+{% endblock stylesheets %}
+
+
+{# Script ####################################################################}
+
+
+{# Display ###################################################################}

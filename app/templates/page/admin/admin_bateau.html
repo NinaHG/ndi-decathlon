@@ -1,0 +1,28 @@
+{% extends "layout/base/base_success.html" %}
+
+{# Metadata ##################################################################}
+{% set page_name = "Admin bateau" %}
+{% set page_description = "Page Admin bateau." %}
+
+
+{# Stylesheet ################################################################}
+{% block stylesheets %}
+{{ super() }}
+{% endblock stylesheets %}
+
+
+{# Script ####################################################################}
+
+
+{# Display ###################################################################}
+{% block main %}
+<h1>Admin bateau</h1>
+
+      <h1>Bateau {{ bateau.nom }}</h1>
+    <p>Bateau de sauvetage ? {% if bateau.sauvetage %} oui {% else %} non {% endif %} </p>
+    <form class="m-auto needs-validation" method="post" action="{{ url_for('admin_bateau',id=bateau.bat_id) }}">
+		{{ form.csrf_token() }}
+        {{ form.submit(class="btn btn-primary") }}
+        <a href="{{ url_for('admin') }}" class="col btn btn-primary" role="button">Annuler</a>
+    </form>
+{% endblock main %}

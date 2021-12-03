@@ -1,0 +1,22 @@
+image: node:latest
+
+before_script:
+    - apt-get update -qy
+    - apt-get install -y ruby-dev python3-venv
+    - gem install dpl
+
+stages:
+    - production
+
+production:
+    type: deploy
+    stage: production
+    image: ruby:latest
+    script:
+        - dpl --provider=heroku --app=$HEROKU_APP_PRODUCTION --api-key=$HEROKU_API_KEY
+        - python3 -m venv venv
+        - source venv/bin/activate
+        - pip install -r requirements.txt
+        - rm -rf database/
+    only:
+        - master

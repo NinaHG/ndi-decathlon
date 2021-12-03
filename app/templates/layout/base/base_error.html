@@ -1,0 +1,28 @@
+{% extends "layout/base/base.html" %}
+
+
+{# Metadata ##################################################################}
+{% set page_name = "{} {}".format(error.code, error.name) %}
+{% set page_description = "{} {}: {}".format(error.code, error.name, error.description) %}
+
+
+{# Stylesheet ################################################################}
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/layout/base/base_error.css')}}"/>
+{% endblock stylesheets %}
+
+
+{# Script ####################################################################}
+{% block scripts %}{% endblock scripts %}
+
+
+{# Display ###################################################################}
+{% block body %}
+<main class="container-fluid flex-fill d-flex">
+	<div class="m-auto text-center">
+		<p id="error-code">{{ error.code }}</p>
+		<p id="error-name">{{ error.name }}</p>
+		<a class="btn btn-primary mt-5" href="{{ url_for('home') }}">Revenir à l'accueil</a>
+	</div>
+</main>
+{% endblock body %}

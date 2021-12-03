@@ -1,0 +1,48 @@
+{% extends "layout/base/base_success.html" %}
+
+{# Metadata ##################################################################}
+{% set page_name = "Admin" %}
+{% set page_description = "Page Admin." %}
+
+
+{# Stylesheet ################################################################}
+{% block stylesheets %}
+{{ super() }}
+{% endblock stylesheets %}
+
+
+{# Script ####################################################################}
+
+
+{# Display ###################################################################}
+{% block main %}
+    <h2>La liste des personnes à valider</h2>
+    <table>
+        <tr>
+            <th>Nom et Prénom</th>
+            <th></th>
+         </tr>
+        {% for p in personnes %}
+            <tr>
+                <td>{{ p.nom }} {{ p.prenom }}</td>
+                <td><a href="{{ url_for('admin_personne', id =p.pers_id) }}" class="col btn btn-primary" role="button">Valider</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+    </br>
+    <h2>La liste des bateaux à valider</h2>
+        <table>
+        <tr>
+            <th>Nom</th>
+            <th></th>
+         </tr>
+        {% for b in bateaux %}
+            <tr>
+                <td>{{ b.nom }}</td>
+                <td><a href="{{ url_for('admin_bateau', id =b.bat_id) }}" class="col btn btn-primary" role="button">Valider</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+
+
+{% endblock main %}

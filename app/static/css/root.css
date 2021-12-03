@@ -1,0 +1,20 @@
+@font-face {
+    font-family: "Montserrat";
+    src: url("/static/font/Montserrat/Montserrat-Regular.ttf") format("truetype")
+}
+
+@font-face {
+    font-family: "Montserrat-Bold";
+    src: url("/static/font/Montserrat/Montserrat-Bold.ttf") format("truetype")
+}
+
+
+:root {
+    --txt-font-p: "Montserrat";
+    --bg-color-light-p: #dce4e9;
+
+    --bg-color-dark-p: #1e2228;
+    --bg-color-dark-s: #292e36;
+    --txt-color-for-dark-p: #a4a4a4;
+    --txt-color-for-dark-s: #a4a4a4;
+}

@@ -1,0 +1,25 @@
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+p, a,
+div, span, li,
+h1, h2, h3, h4, h5, h6,
+header, aside, footer, nav {
+	font-family: var(--txt-font-p) Arial, Helvetica, sans-serif
+}
+
+body {
+	margin: 0;
+	width: 100%;
+	height: 100vh;
+	background-color: var(--bg-color-light-p);
+}
+
+body > footer {
+	padding: 1.5rem;
+	text-align: center;
+	background-color: var(--bg-color-dark-s);
+	color: var(--txt-color-for-dark-s);
+}

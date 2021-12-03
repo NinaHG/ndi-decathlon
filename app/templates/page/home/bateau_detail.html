@@ -1,0 +1,21 @@
+{% extends "layout/base/base_success.html" %}
+
+{# Metadata ##################################################################}
+{% set page_name = "Bateau" %}
+{% set page_description = "Page bateau." %}
+
+
+{# Stylesheet ################################################################}
+{% block stylesheets %}
+{{ super() }}
+{% endblock stylesheets %}
+
+
+{# Script ####################################################################}
+
+
+{# Display ###################################################################}
+{% block main %}
+    <h1>Bateau {{ bateau.nom }}</h1>
+    <p>Bateau de sauvetage ? {% if bateau.sauvetage %} oui {% else %} non {% endif %} </p>
+{% endblock main %}

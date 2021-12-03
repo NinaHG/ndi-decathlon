@@ -1,0 +1,45 @@
+{% extends "layout/base_wiki.html" %}
+
+{# Metadata ##################################################################}
+{% set page_name = "Wiki" %}
+{% set page_description = "Wikipedia des sports." %}
+
+
+{# Stylesheet ################################################################}
+
+
+{# Script ####################################################################}
+
+
+{# Display ###################################################################}
+{% block main %}
+    <div class="block">
+        <h1 class="vtmn-typo_title-1 mb-3 text-center">Wiki des sports</h1>
+    </div>
+
+    <form action="{{ url_for('search_wiki') }}">
+      <div class="text-center mb-5">
+        <div class="vtmn-text-input_container w-50">
+          <input
+            type="text"
+            class="vtmn-text-input w-100"
+            id="search"
+            name="search"
+            placeholder="Baseball"
+          />
+          <span class="vtmx-search-line"></span>
+        </div>
+      </div>
+    </form>
+
+    <div class="text-center">
+        <a href="{{ url_for('all_groups')}}" class="vtmn-link vtmn-link--standalone my-auto">
+            Liste des groupes de sports
+        </a>
+        &#8226;
+        <a href="{{ url_for('all_sports') }}" class="vtmn-link vtmn-link--standalone my-auto">
+            Liste des sports
+        </a>
+    </div>
+
+{% endblock main %}

@@ -1,0 +1,26 @@
+{% extends "layout/base/base_success.html" %}
+
+{# Metadata ##################################################################}
+{% set page_name = "Bateaux" %}
+{% set page_description = "Page bateaux." %}
+
+
+{# Stylesheet ################################################################}
+{% block stylesheets %}
+{{ super() }}
+{% endblock stylesheets %}
+
+
+{# Script ####################################################################}
+
+
+{# Display ###################################################################}
+{% block main %}
+<h1>Tous les bateaux</h1>
+    <ul>
+        {% for bateau in bateaux %}
+            <li><a href="{{ url_for("bateau_detail", id = bateau.bat_id) }}"> {{ bateau.nom }} </a></li>
+        {% endfor %}
+    </ul>
+
+{% endblock main %}

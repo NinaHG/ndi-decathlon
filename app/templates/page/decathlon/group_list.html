@@ -1,0 +1,27 @@
+{% extends "layout/base_wiki.html" %}
+
+{# Metadata ##################################################################}
+{% set page_name = "Groupes de sports" %}
+{% set page_description = "Liste des groupes de sports." %}
+
+
+{# Stylesheet ################################################################}
+
+
+{# Script ####################################################################}
+
+
+{# Display ###################################################################}
+{% block main %}
+    <h1 class="vtmn-typo_title-1 mb-3">Groupes</h1>
+
+    <ul>
+    {% for group in groups %}
+        <li>
+            <a href="{{ url_for('group_desc', group_id=group.id) }}" class="vtmn-link vtmn-link--standalone">
+            {{ group.attributes.name }}
+            </a>
+        </li>
+    {% endfor %}
+    </ul>
+{% endblock main %}

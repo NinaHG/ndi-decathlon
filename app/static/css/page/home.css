@@ -1,0 +1,9 @@
+/* pas de mise en forme spécifique à cette page */
+
+/* exemple */
+p {
+	background: white;
+	padding: 1rem 1.4rem;
+	border-radius: 0.4rem;
+	text-align: justify;
+}
